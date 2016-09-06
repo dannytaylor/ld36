@@ -1,0 +1,271 @@
+[gd_scene load_steps=14 format=1]
+
+[ext_resource path="res://scripts/stage.gd" type="Script" id=1]
+[ext_resource path="res://scenes/player1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/fire.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/OstrichSans-Black.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://sprites/bg.png" type="Texture" id=7]
+[ext_resource path="res://sprites/pause.png" type="Texture" id=8]
+[ext_resource path="res://sprites/shadow.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 64
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 64
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+
+font/size = 64
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 6 )
+
+[node name="stage" type="Node2D"]
+
+process/pause_mode = 1
+script/script = ExtResource( 1 )
+
+[node name="player1" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 139.265, 529.55 )
+gravity_scale = 15.0
+damp_override/linear = 4.0
+
+[node name="player2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 883.348, 524.376 )
+collision/layers = 2
+collision/mask = 2
+gravity_scale = 15.0
+damp_override/linear = 4.0
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 473.024, 622.712 )
+transform/scale = Vector2( 16.5435, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 3.23882, 0, 0, 2.96383, 2.77141, 1.32692 )
+shapes/0/trigger = false
+collision/layers = 7
+collision/mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+
+transform/pos = Vector2( 2.77141, 1.32692 )
+transform/scale = Vector2( 3.23882, 2.96383 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="wallL" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -29.4585, 146.454 )
+transform/scale = Vector2( 0.898544, 15.6067 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 3.23882, 0, 0, 2.96383, 2.77141, 1.32692 )
+shapes/0/trigger = false
+collision/layers = 7
+collision/mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallL"]
+
+transform/pos = Vector2( 2.77141, 1.32692 )
+transform/scale = Vector2( 3.23882, 2.96383 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="wallR" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1066.1, 151.043 )
+transform/scale = Vector2( 1.37353, 15.437 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 3.23882, 0, 0, 2.96383, 2.77141, 1.32692 )
+shapes/0/trigger = false
+collision/layers = 7
+collision/mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallR"]
+
+transform/pos = Vector2( 2.77141, 1.32692 )
+transform/scale = Vector2( 3.23882, 2.96383 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="fire" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 491.785, 518.993 )
+transform/scale = Vector2( 0.907119, 0.907119 )
+
+[node name="platform1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 216.429, 403.754 )
+collision/layers = 3
+collision/mask = 3
+
+[node name="platform2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 849.294, 396.543 )
+collision/layers = 3
+collision/mask = 3
+
+[node name="platform3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1100.82, 201.529 )
+collision/layers = 3
+collision/mask = 3
+
+[node name="timer" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 455.0
+margin/top = 16.0
+margin/right = 578.0
+margin/bottom = 93.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="spawn_points" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="spawn1" type="Position2D" parent="spawn_points"]
+
+transform/pos = Vector2( 72.9813, 350.864 )
+
+[node name="spawn2" type="Position2D" parent="spawn_points"]
+
+transform/pos = Vector2( 83, 566 )
+
+[node name="spawn3" type="Position2D" parent="spawn_points"]
+
+transform/pos = Vector2( 717, 568 )
+
+[node name="spawn4" type="Position2D" parent="spawn_points"]
+
+transform/pos = Vector2( 587, 408 )
+
+[node name="spawn5" type="Position2D" parent="spawn_points"]
+
+transform/pos = Vector2( 780, 245 )
+
+[node name="spawn6" type="Position2D" parent="spawn_points"]
+
+transform/pos = Vector2( 322, 337 )
+
+[node name="drops" type="Node2D" parent="."]
+
+[node name="bg" type="Sprite" parent="."]
+
+transform/pos = Vector2( 510.166, 297.345 )
+z/z = -2
+texture = ExtResource( 7 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="winner" type="Node2D" parent="."]
+
+z/z = 2
+
+[node name="wintext" type="Label" parent="winner"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 256.0
+margin/top = 120.0
+margin/right = 779.0
+margin/bottom = 407.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "paused"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="winner"]
+
+visibility/opacity = 0.388889
+transform/pos = Vector2( 515.285, 304.709 )
+transform/scale = Vector2( 110, 110 )
+z/z = -1
+texture = ExtResource( 8 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="shadow" type="Sprite" parent="."]
+
+visibility/opacity = 0.2
+transform/pos = Vector2( 533.018, 306.629 )
+texture = ExtResource( 9 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="start_timer" type="Label" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -350.0
+margin/top = -183.0
+margin/right = -622.0
+margin/bottom = -323.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "get ready..."
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

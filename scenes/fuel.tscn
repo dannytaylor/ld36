@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scripts/fuel.gd" type="Script" id=1]
+[ext_resource path="res://sprites/fuel.png" type="Texture" id=2]
+[ext_resource path="res://sound/fuel.wav" type="Sample" id=3]
+[ext_resource path="res://sound/spawn.wav" type="Sample" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="SampleLibrary" id=2]
+
+samples/fuel = { "db":-20.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/spawn = { "db":-15.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+
+[node name="fuel" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.83845, 0, 0, 1.83845, 1.94025, 6.82727 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 3
+collision/mask = 3
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0.171177, 1.14054 )
+transform/scale = Vector2( 0.125464, 0.125464 )
+texture = ExtResource( 2 )
+modulate = Color( 1, 0.609375, 0.609375, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 1.94025, 6.82727 )
+transform/scale = Vector2( 1.83845, 1.83845 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="ding" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 2 )
+config/pitch_random = 0.0
+
+[connection signal="body_enter" from="." to="." method="_on_body_enter"]
+
+
