@@ -7,7 +7,7 @@ func _ready():
 
 func _process(delta):
 	set_time = get_node("panel/match_set").get_value()*10+30
-	get_node("panel/match_text").set_text("match time: "+str(set_time))
+	get_node("panel/match_text").set_text(str(set_time)+" s")
 
 func _on_start_pressed():
 	#if (get_node("panel/char1").is_pressed() == get_node("panel/char2").is_pressed()):

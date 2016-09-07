@@ -30,9 +30,9 @@ func _ready():
 	
 	set_process(true)
 	
-	get_node("timer").set_text(str(gamestate.timer))
-	get_node("timer").set("custom_colors/font_color",Color(0,0,0))
-	get_node("timer").set("rect/scale",Vector2(1,1))
+	get_node("timer/timer").set_text(str(gamestate.timer))
+	get_node("timer/timer").set("custom_colors/font_color",Color(255,255,255))
+	get_node("timer/timer").set("rect/scale",Vector2(1,1))
 	
 func _process(delta):
 	if !gamestate.frame_lock:
@@ -57,10 +57,10 @@ func _process(delta):
 		elif gamestate.frame == 49:
 			gamestate.timer -= 1
 			if gamestate.timer ==10:
-				get_node("timer").set("custom_colors/font_color",Color(1,0.3,0.3))
-				get_node("timer").set("rect/scale",Vector2(1.2,1.2))
+				get_node("timer/timer").set("custom_colors/font_color",Color(1,0.3,0.3))
+				get_node("timer/timer").set("rect/scale",Vector2(1.2,1.2))
 			gamestate.frame = 0
-			get_node("timer").set_text(str(gamestate.timer))
+			get_node("timer/timer").set_text(str(gamestate.timer))
 			
 			#spawnthings
 			if spawn_chance*rand_range(0,100)>98:

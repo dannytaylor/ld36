@@ -1,40 +1,41 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scripts/stage.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/fire.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/platform.tscn" type="PackedScene" id=5]
-[ext_resource path="res://fonts/OstrichSans-Black.otf" type="DynamicFontData" id=6]
-[ext_resource path="res://sprites/bg.png" type="Texture" id=7]
+[ext_resource path="res://sprites/bg.png" type="Texture" id=6]
+[ext_resource path="res://fonts/OstrichSans-Black.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://sprites/pause.png" type="Texture" id=8]
 [ext_resource path="res://sprites/shadow.png" type="Texture" id=9]
+[ext_resource path="res://sprites/fg.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="DynamicFont" id=2]
-
-font/size = 64
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 6 )
-
 [sub_resource type="DynamicFont" id=3]
 
 font/size = 64
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 6 )
+font/font = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=4]
 
 font/size = 64
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 6 )
+font/font = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 64
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 7 )
 
 [node name="stage" type="Node2D"]
 
@@ -43,22 +44,22 @@ script/script = ExtResource( 1 )
 
 [node name="player1" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 139.265, 529.55 )
-gravity_scale = 15.0
+transform/pos = Vector2( 139.265, 523.411 )
+gravity_scale = 20.0
 damp_override/linear = 4.0
 
 [node name="player2" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 883.348, 524.376 )
+transform/pos = Vector2( 877.209, 519.465 )
 collision/layers = 2
 collision/mask = 2
-gravity_scale = 15.0
+gravity_scale = 20.0
 damp_override/linear = 4.0
 
 [node name="ground" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 473.024, 622.712 )
+transform/pos = Vector2( 485.39, 614.801 )
 transform/scale = Vector2( 16.5435, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -83,7 +84,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="wallL" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( -29.4585, 146.454 )
+transform/pos = Vector2( -6.13151, 123.127 )
 transform/scale = Vector2( 0.898544, 15.6067 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -108,7 +109,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="wallR" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1066.1, 151.043 )
+transform/pos = Vector2( 1047.68, 152.271 )
 transform/scale = Vector2( 1.37353, 15.437 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -132,43 +133,28 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="fire" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 491.785, 518.993 )
+transform/pos = Vector2( 488.785, 511.993 )
 transform/scale = Vector2( 0.907119, 0.907119 )
 
 [node name="platform1" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 216.429, 403.754 )
+transform/pos = Vector2( 269.454, 348.506 )
+transform/scale = Vector2( 1.16073, 1 )
 collision/layers = 3
 collision/mask = 3
 
 [node name="platform2" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 849.294, 396.543 )
+transform/pos = Vector2( 752.859, 426.009 )
+transform/scale = Vector2( 0.940629, 1 )
 collision/layers = 3
 collision/mask = 3
 
 [node name="platform3" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 1100.82, 201.529 )
+transform/pos = Vector2( 1034.52, 211.351 )
 collision/layers = 3
 collision/mask = 3
-
-[node name="timer" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 455.0
-margin/top = 16.0
-margin/right = 578.0
-margin/bottom = 93.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [node name="spawn_points" type="Node2D" parent="."]
 
@@ -176,19 +162,19 @@ editor/display_folded = true
 
 [node name="spawn1" type="Position2D" parent="spawn_points"]
 
-transform/pos = Vector2( 72.9813, 350.864 )
+transform/pos = Vector2( 169.972, 316.487 )
 
 [node name="spawn2" type="Position2D" parent="spawn_points"]
 
-transform/pos = Vector2( 83, 566 )
+transform/pos = Vector2( 191.041, 550.039 )
 
 [node name="spawn3" type="Position2D" parent="spawn_points"]
 
-transform/pos = Vector2( 717, 568 )
+transform/pos = Vector2( 687.534, 544.673 )
 
 [node name="spawn4" type="Position2D" parent="spawn_points"]
 
-transform/pos = Vector2( 587, 408 )
+transform/pos = Vector2( 418.8, 438.693 )
 
 [node name="spawn5" type="Position2D" parent="spawn_points"]
 
@@ -196,15 +182,17 @@ transform/pos = Vector2( 780, 245 )
 
 [node name="spawn6" type="Position2D" parent="spawn_points"]
 
-transform/pos = Vector2( 322, 337 )
+transform/pos = Vector2( 339.188, 192.127 )
 
 [node name="drops" type="Node2D" parent="."]
 
 [node name="bg" type="Sprite" parent="."]
 
-transform/pos = Vector2( 510.166, 297.345 )
+visibility/light_mask = 0
+transform/scale = Vector2( 0.5, 0.5 )
 z/z = -2
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
+centered = false
 __meta__ = { "_edit_lock_":true }
 
 [node name="winner" type="Node2D" parent="."]
@@ -240,7 +228,8 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="shadow" type="Sprite" parent="."]
 
-visibility/opacity = 0.2
+visibility/visible = false
+visibility/light_mask = 0
 transform/pos = Vector2( 533.018, 306.629 )
 texture = ExtResource( 9 )
 __meta__ = { "_edit_lock_":true }
@@ -255,15 +244,45 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -350.0
-margin/top = -183.0
-margin/right = -622.0
-margin/bottom = -323.0
+margin/left = -359.0
+margin/top = -91.0
+margin/right = -631.0
+margin/bottom = -231.0
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "get ready..."
 align = 1
 valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="fg" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.5, 0.5 )
+z/z = 3
+texture = ExtResource( 10 )
+centered = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="timer" type="Node2D" parent="."]
+
+z/z = 3
+
+[node name="timer" type="Label" parent="timer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 455.0
+margin/top = 16.0
+margin/right = 578.0
+margin/bottom = 93.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "60"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
