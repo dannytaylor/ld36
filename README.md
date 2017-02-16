@@ -1,4 +1,5 @@
-my game for ld36
+my game for ld36, made in godot 2.1.
+simple hotseat game, originally planned to have networking, but I couldn't get it to work.
 playable on [itch](https://xhg.itch.io/ld36)
 
 pause:z // p1:wasd // p2:arrows
